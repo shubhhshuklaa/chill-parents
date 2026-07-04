@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "349395762696",
+    "project_id": "chillparents",
+    "storage_bucket": "chillparents.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349395762696:android:8bfc4352c474677ef51bbd",
+        "android_client_info": {
+          "package_name": "com.example.chill_parents"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRoSl4ODi7LS050GPf-X3IqcD5ykzo7aY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
