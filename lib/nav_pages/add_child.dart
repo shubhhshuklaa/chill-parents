@@ -137,6 +137,7 @@ class _AddChildPageState extends State<AddChildPage> {
           "lastSeen": FieldValue.serverTimestamp(),
 
           "createdAt": FieldValue.serverTimestamp(),
+          "sos": false,
 
         });
 

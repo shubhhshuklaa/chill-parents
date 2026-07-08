@@ -5,6 +5,7 @@ import 'package:chill_parents/nav_pages/home.dart';
 import 'package:chill_parents/nav_pages/location.dart';
 import 'package:chill_parents/nav_pages/profile.dart';
 
+
 class ParentDashboard extends StatefulWidget {
   const ParentDashboard({super.key});
 
@@ -20,7 +21,7 @@ class _ParentDashboardState extends State<ParentDashboard> {
     HomePage(),
     LiveTrackingPage(),
     ChildrenPage(),
-    ProfilePage(),
+    ParentProfilePage(),
   ];
 
   @override
@@ -29,6 +30,7 @@ class _ParentDashboardState extends State<ParentDashboard> {
     return Scaffold(
 
       body: pages[currentIndex],
+
 
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.indigo,
@@ -43,6 +45,7 @@ class _ParentDashboardState extends State<ParentDashboard> {
         icon: const Icon(Icons.add),
         label: const Text("Add Child",style: TextStyle(color: Colors.white),),
       ),
+
 
       floatingActionButtonLocation:
       FloatingActionButtonLocation.centerDocked,
