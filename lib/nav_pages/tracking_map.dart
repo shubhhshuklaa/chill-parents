@@ -29,14 +29,24 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
   final AudioPlayer audioPlayer = AudioPlayer();
 
   Future<void> playBeep() async {
+
+    if (isPlaying) return;
+
+    isPlaying = true;
+
     await audioPlayer.setReleaseMode(ReleaseMode.loop);
 
     await audioPlayer.play(
-      AssetSource("beep.mp3"),
+      AssetSource("sound.mp3"),
     );
   }
 
   Future<void> stopBeep() async {
+
+    if (!isPlaying) return;
+
+    isPlaying = false;
+
     await audioPlayer.stop();
   }
 
@@ -62,6 +72,11 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
   double geofenceCenterLng = 0;
 
   bool isOutside = false;
+
+  bool isAlarmStopped = false;
+  bool showStopButton = false;
+
+  bool isPlaying = false;
 
   @override
   void initState() {
@@ -99,7 +114,6 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
     });
   }
 
-
   void checkDistance(
       double childLat,
       double childLng,
@@ -115,13 +129,14 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
     print("Radius = $safeRadius");
 
     if (distance > safeRadius) {
-      if (!isOutside) {
+      if (!isOutside && !isAlarmStopped) {
         isOutside = true;
         playBeep();
       }
     } else {
       if (isOutside) {
         isOutside = false;
+        isAlarmStopped = false; // Reset
         stopBeep();
       }
     }
@@ -199,7 +214,6 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
       );
     });
   }
-
   void getParentLocation() {
 
     Geolocator.getPositionStream(
@@ -316,12 +330,29 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
         centerTitle: true,
 
         actions: [
-
           IconButton(
             onPressed: _showRadiusDialog,
             icon: const Icon(Icons.add_location_alt),
             tooltip: "Add Geofence",
           ),
+
+          if (showStopButton)
+            IconButton(
+              onPressed: () async {
+                isAlarmStopped = true;
+                await stopBeep();
+
+                if (!mounted) return;
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Alarm Stopped"),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.volume_off),
+              tooltip: "Stop Alarm",
+            ),
 
         ],
       ),

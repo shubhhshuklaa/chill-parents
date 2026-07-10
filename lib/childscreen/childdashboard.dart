@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart';
 class ChildDashboard extends StatefulWidget {
   final String childId;
 
+
   const ChildDashboard({
     super.key,
     required this.childId,

@@ -256,9 +256,19 @@ class _ParentRegisterScreenState extends State<ParentRegisterScreen> {
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
-                          if (value == null || !value.contains("@")) {
-                            return "Enter Valid Email";
+                          if (value == null || value.trim().isEmpty) {
+                            return "Email is required";
                           }
+
+                          final gmailRegex = RegExp(
+                            r'^[a-zA-Z0-9]+@gmail\.com$',
+                            caseSensitive: false,
+                          );
+
+                          if (!gmailRegex.hasMatch(value.trim())) {
+                            return "Enter a valid Gmail address";
+                          }
+
                           return null;
                         },
                         decoration: InputDecoration(
@@ -286,9 +296,22 @@ class _ParentRegisterScreenState extends State<ParentRegisterScreen> {
                         controller: passwordController,
                         obscureText: obscurePassword,
                         validator: (value) {
-                          if (value == null || value.length < 6) {
-                            return "Minimum 6 Characters";
+                          if (value == null || value.trim().isEmpty) {
+                            return "Password is required";
                           }
+
+                          if (value.length < 8) {
+                            return "Password must be at least 8 characters";
+                          }
+
+                          final passwordRegex = RegExp(
+                            r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&^#()_+\-=\[\]{};:"\\|,.<>\/]).{8,}$',
+                          );
+
+                          if (!passwordRegex.hasMatch(value)) {
+                            return "Password must contain uppercase, lowercase, number & special character";
+                          }
+
                           return null;
                         },
                         decoration: InputDecoration(

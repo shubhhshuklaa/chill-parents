@@ -44,9 +44,7 @@ class _LiveTrackingPageState extends State<LiveTrackingPage> {
 
             itemBuilder: (context, index) {
               final child = snapshot.data!.docs[index];
-
               final childId = child["childId"];
-
               return Card(
                 elevation: 4,
                 margin: const EdgeInsets.only(bottom: 12),

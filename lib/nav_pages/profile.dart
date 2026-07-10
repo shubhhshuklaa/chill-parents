@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class ParentProfilePage extends StatelessWidget {
   const ParentProfilePage({super.key});
 
@@ -12,7 +11,6 @@ class ParentProfilePage extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       backgroundColor: const Color(0xffF5F8FF),
-
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
@@ -54,7 +52,6 @@ class ParentProfilePage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-
                 //==========================
                 // Profile Avatar
                 //==========================
