@@ -19,8 +19,8 @@ class _ParentDashboardState extends State<ParentDashboard> {
 
   final pages = const [
     HomePage(),
+    TrackAllChildrenPage(),
     LiveTrackingPage(),
-    ChildrenPage(),
     ParentProfilePage(),
   ];
 

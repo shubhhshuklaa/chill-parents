@@ -360,7 +360,7 @@ class _TrackingMapPageState extends State<TrackingMapPage> {
       body: GoogleMap(
         initialCameraPosition: const CameraPosition(
           target: _defaultLocation,
-          zoom: 16,
+          zoom: 20,
         ),
         myLocationEnabled: true,
         myLocationButtonEnabled: true,

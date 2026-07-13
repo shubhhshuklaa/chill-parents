@@ -140,7 +140,8 @@ class _ChildDashboardState extends State<ChildDashboard> {
         Geolocator.getPositionStream(
           locationSettings: const LocationSettings(
             accuracy: LocationAccuracy.best,
-            distanceFilter: 5,
+
+            distanceFilter: 1,
           ),
         ).listen((Position position) async {
           try {
