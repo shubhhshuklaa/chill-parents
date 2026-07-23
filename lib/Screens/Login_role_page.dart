@@ -10,8 +10,18 @@ class RoleSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF5F7FA),
-      body: SafeArea(
+      body: Stack(
+        children: [
+      // Background Image
+      Positioned.fill(
+      child: Image.asset(
+        'assets/images/Generated image 1.png',
+        fit: BoxFit.cover,
+      ),
+    ),
+
+    // Screen Content
+      SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
@@ -21,17 +31,31 @@ class RoleSelectionScreen extends StatelessWidget {
               const Icon(
                 Icons.family_restroom,
                 size: 90,
-                color: Color(0xff1565C0),
+                color: Color(0xfff31010),
               ),
 
               const SizedBox(height: 20),
 
+              Container(
+                width: 100,
+                height: 2,
+                color: Colors.black,
+              ),
+              const SizedBox(width: 12),
               const Text(
                 "Welcome",
                 style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 25,
+                  fontFamily: "Poppins",
+                  fontWeight: FontWeight.w600,
                 ),
+              ),
+              const SizedBox(width: 12),
+              Container(
+                width: 120,
+                height: 5,
+                color: Colors.red,
               ),
 
               const SizedBox(height: 8),
@@ -41,11 +65,13 @@ class RoleSelectionScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey,
+                  fontFamily: "Poppins",
+                  color: Colors.black,
                 ),
               ),
 
               const Spacer(),
+
 
               _roleCard(
                 context,
@@ -87,6 +113,7 @@ class RoleSelectionScreen extends StatelessWidget {
                 "Child Tracker v1.0",
                 style: TextStyle(
                   color: Colors.grey,
+                  fontFamily: "Poppins",
                 ),
               ),
 
@@ -94,6 +121,8 @@ class RoleSelectionScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+        ]
       ),
     );
   }
@@ -144,6 +173,7 @@ class RoleSelectionScreen extends StatelessWidget {
                     title,
                     style: const TextStyle(
                       fontSize: 22,
+                      fontFamily: "Poppins",
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -152,6 +182,7 @@ class RoleSelectionScreen extends StatelessWidget {
                     subtitle,
                     style: const TextStyle(
                       color: Colors.grey,
+                      fontFamily: "Poppins",
                     ),
                   ),
                 ],
